@@ -1,0 +1,11 @@
+:root {
+    --primary-b: #378752;
+    --primary-l: #5aa573;
+    --primary-x-l: #8ccca1;
+    --primary-g-x: linear-gradient(to right, #0d7916, 40%, #19da29);
+    --primary-g-x-l: var(--primary-x-l);
+    /* content */
+}
+
+
+/* #FEEA79 */

@@ -1,0 +1,16 @@
+:root {
+    /* --sidebar: linear-gradient(to left, #353C48, #575b63); */
+    --sidebar: #353C48;
+    --color-sidebar: white;
+    --color-sidebar-active: #ffffff31;
+    --nav-header-side: white;
+    --text-shadow-side: 1px 1px 1px black;
+    --bg-sidebar-active: #585e69;
+    --color-sidebar-active: white;
+    --border-brand: rgb(77, 77, 77);
+}
+
+.navbar .navbar-nav .nav-link {
+    color: white !important;
+    text-shadow: 2px 2px 3px var(--primary-b);
+}

@@ -1,0 +1,19 @@
+{
+    "name": "josefranciscocruzcorro/firmador",
+    "description": "Firma electronica SRI",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Josefranciscocruzcorro\\Firmador\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jose Francisco Cruz Corro",
+            "email": "josefranciscocruzcorro@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "version": "1.0.1"
+}

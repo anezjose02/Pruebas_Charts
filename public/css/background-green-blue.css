@@ -1,0 +1,8 @@
+:root {
+    --primary-b: #1c8c9b;
+    --primary-b-2: #1c8c9b;
+    --primary-l: #3dc3d4;
+    --primary-x-l: #6adae9;
+    --primary-g-x: linear-gradient(to left, var(--primary-l), 50%, var(--primary-b));
+    --primary-g-x-l: linear-gradient(to bottom, var(--primary-x-l), 50%, var(--primary-l));
+}

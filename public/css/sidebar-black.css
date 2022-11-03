@@ -1,0 +1,15 @@
+:root {
+    --sidebar: #191a1b;
+    --color-sidebar: white;
+    --color-sidebar-active: rgba(255, 255, 255, 0.192);
+    --nav-header-side: white;
+    --text-shadow-side: 1px 1px 1px black;
+    --bg-sidebar-active: #434446;
+    --color-sidebar-active: white;
+    --border-brand: rgb(58, 58, 58);
+}
+
+.navbar .navbar-nav .nav-link {
+    color: white !important;
+    text-shadow: 2px 2px 3px var(--primary-b);
+}

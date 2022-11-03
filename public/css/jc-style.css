@@ -1,0 +1,64 @@
+:root {
+    --precarga-bg: #12445af6;
+}
+
+.container-loader2 {
+    position: absolute;
+    z-index: 10000000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.jc-precarga {
+    z-index: 10000000;
+    display: flex;
+    top: 0;
+    left: 0;
+    position: static;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--precarga-bg);
+}
+
+.jc-loader {
+    display: inline;
+    height: 50px;
+    width: 50px;
+    border: 10px solid gray;
+    border-top: 10px solid white;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+}
+
+.jc-loader-text {
+    display: inline;
+    font-size: 30px;
+    color: white;
+    padding: 0;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    margin: 10px;
+    text-transform: uppercase;
+    transform: translateY(30px);
+    animation: texto 1s ease forwards;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes texto {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+        height: 40px;
+        -webkit-box-reflect: below 0px linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.4));
+    }
+}

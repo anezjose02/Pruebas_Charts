@@ -1,0 +1,12 @@
+:root {
+    --primary-b: #d33c1a;
+    --primary-b-2: #d33c1a;
+    --primary-l: #e6674a;
+    --primary-x-l: #ec8872;
+    --primary-g-x: linear-gradient(to left, var(--primary-l), 50%, var(--primary-b));
+    --primary-g-x-l: linear-gradient(to bottom, var(--primary-x-l), 75%, var(--primary-l));
+    --color-nav: white;
+}
+
+
+/* #FEEA79 */

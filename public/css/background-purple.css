@@ -1,0 +1,12 @@
+:root {
+    --primary-b: #3c3786;
+    --primary-b-2: #3c3786;
+    --primary-l: #5d5ebb;
+    --primary-x-l: #7b7cdb;
+    --primary-g-x: linear-gradient(to left, var(--primary-l), 50%, var(--primary-b));
+    --primary-g-x-l: linear-gradient(to bottom, var(--primary-x-l), 80%, var(--primary-b));
+    --color-nav: white;
+    --btn-primary-b: #A7081C;
+    --btn-primary-l: #eb5d70;
+    /* --btn-primary-x-l: #eb5d70; */
+}
