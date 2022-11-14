@@ -122,8 +122,7 @@
               <div class="card-footer">
                 <div class="row">
                   <div class="col-sm-3 col-6">
-                    <h6 class="mb-0 w-100">
-                      <div class="description-block border-right">
+                    <div class="description-block border-right">
                         <div class="card direct-chat direct-chat-warning">
                             <div class="card-header">
                               <h3 class="card-title">Total de ventas</h3>
@@ -134,17 +133,17 @@
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                               <table class="table">
                                 <thead>
                                     <tr>
                                         <th>
-                                            <select class="form-control form-control-sm select2" style="align-content: center; width:120px; heigth: 60px; border: 2px solid: black;">
+                                            <select class="form-control select2" style="width: 100%;">
                                                 <option selected="selected">Data</option>
                                             </select>
                                         </th>
                                         <th>
-                                            <label for="" style="position: relative; rigth:20px;">$ 20000.00</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="$20000.00">
                                         </th>
                                     </tr>
                                     <tr>
@@ -173,8 +172,6 @@
                             
                           </div>
                     </div>
-                    </h6>
-                    
                     <!-- /.description-block -->
                   </div>
                   <!-- /.col -->
@@ -190,17 +187,18 @@
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
+                            
                               <table class="table">
                                 <thead>
                                     <tr>
                                       <th colspan="1">
                                         <label for="">Desde</label> <br>
-                                        <input type="date" name="from" id="from" style="align-content: center; width:120px; border: 2px solid: black;">
+                                        <input type="date" name="from" id="from">
                                     </th>
                                     <th colspan="1">
                                         <label for="">Hasta</label> <br>
-                                        <input type="date" name="to" id="to" style="align-content: center; width:120px; border: 2px solid: black;">
+                                        <input type="date" name="to" id="to">
                                     </th>
                                       <th colspan="2" rowspan="10">
                                         <!-- jquery cdn -->
@@ -221,7 +219,7 @@
                                       <th colspan="1">
                                         <div class="progress" style="height: 12px;">
                                           <div class="progress-bar" role="progressbar"
-                                          aria-valuemin="0" aria-valuemax="100" style="width:25%; background-color:lightgreen;">
+                                          aria-valuemin="0" aria-valuemax="100" style="width:25%">
                                             <label for="">25</label>
                                           </div>
                                         </div>
@@ -232,7 +230,7 @@
                                       <th colspan="1">
                                         <div class="progress" style="height: 12px;">
                                           <div class="progress-bar" role="progressbar"
-                                          aria-valuemin="0" aria-valuemax="100" style="width:45%; background-color:lightgreen;">
+                                          aria-valuemin="0" aria-valuemax="100" style="width:45%">
                                             <label for="">45</label>
                                           </div>
                                         </div>
@@ -243,7 +241,7 @@
                                       <th colspan="1">
                                         <div class="progress" style="height: 12px;">
                                           <div class="progress-bar" role="progressbar"
-                                          aria-valuemin="0" aria-valuemax="100" style="width:28%; background-color:lightgreen;">
+                                          aria-valuemin="0" aria-valuemax="100" style="width:28%">
                                             <label for="">28</label>
                                           </div>
                                         </div>
@@ -254,7 +252,7 @@
                                     <th colspan="1">
                                       <div class="progress" style="height: 12px;">
                                         <div class="progress-bar" role="progressbar"
-                                        aria-valuemin="0" aria-valuemax="100" style="width:65%; background-color:lightgreen;">
+                                        aria-valuemin="0" aria-valuemax="100" style="width:65%">
                                           <label for="">65</label>
                                         </div>
                                       </div>
@@ -265,7 +263,7 @@
                                   <th colspan="1">
                                     <div class="progress" style="height: 12px;">
                                       <div class="progress-bar" role="progressbar"
-                                      aria-valuemin="0" aria-valuemax="100" style="width:8%; background-color:lightgreen;">
+                                      aria-valuemin="0" aria-valuemax="100" style="width:8%">
                                         <label for="">8</label>
                                       </div>
                                     </div>
@@ -276,7 +274,7 @@
                                 <th colspan="1">
                                   <div class="progress" style="height: 12px;">
                                     <div class="progress-bar" role="progressbar"
-                                    aria-valuemin="0" aria-valuemax="100" style="width:94%; background-color:lightgreen;">
+                                    aria-valuemin="0" aria-valuemax="100" style="width:94%">
                                       <label for="">94</label>
                                     </div>
                                   </div>
@@ -303,7 +301,7 @@
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                               <table class="table">
                                 <thead>
                                     <tr>
@@ -364,10 +362,10 @@
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                               <div class="row">
                                
-                              <canvas id="revenue-chart-canvas" style="width:100%;max-width:600px; position: relative; right:-80px;"></canvas>
+                              <canvas id="revenue-chart-canvas" style="width:100%;max-width:700px; position: relative; right:-25px;"></canvas>
                               <script>
                                                               
                               </script>
@@ -389,18 +387,18 @@
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                                 
                               <table class="table">
                                 <thead>
                                   <tr>
                                     <th colspan="2">
-                                        <select class="form-control select2" style="align-content: center; width:120px; border: 2px solid: black;">
+                                        <select class="form-control select2" style="width: 100%;">
                                             <option selected="selected">Data</option>
                                         </select>
                                     </th>
                                     <th colspan="2">
-                                        <input type="text" class="form-control" id="exampleInputEmail1" style="align-content: center; width:70px; position: relative; rigth:-20px;" >
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="$20000.00">
                                     </th>
                                   </tr>
                                     <tr>
@@ -439,13 +437,13 @@
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                                
-                              <table class="table" >
+                              <table class="table">
                                 <thead>
                                   <tr>
                                     <th colspan="2">
-                                        <select class="form-control select2" style="align-content: center; width:120px; heigth: 60px; border: 2px solid: black;">
+                                        <select class="form-control select2" style="width: 100%;">
                                             <option selected="selected">Data</option>
                                         </select>
                                     </th>
@@ -455,7 +453,7 @@
                                   </tr>
                                   <tr>
                                     <th colspan="3">
-                                      <canvas id="mychart-1" style="width:350px; heigth:350px; position:relative; left:-95px"></canvas>
+                                      <canvas id="mychart-1" style="width:100%;max-width:600px"></canvas>
                                       <script>
                                         
                                         </script>
@@ -482,7 +480,7 @@
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                               <table class="table">
                                 <thead>
                                   <tr>
@@ -497,7 +495,7 @@
                                   </tr>
                                   <tr>
                                     <th colspan="3">
-                                      <canvas id="mychart-2" style="width:400px; heigth:400px; position:relative; left:-95px"></canvas>
+                                      <canvas id="mychart-2" style="width:100%;max-width:600px"></canvas>
                                       <script>
                                         
                                         </script>
@@ -522,7 +520,7 @@
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                               <canvas id="sales-chart" width="400" height="290"></canvas>
                              
                               <script>
@@ -545,7 +543,7 @@
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                               <table class="table">
                                 <thead>
                                     <tr>

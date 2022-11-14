@@ -7,7 +7,6 @@
 @stop
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-
 @stop
 @section('content')
 <div id="app">
@@ -115,36 +114,35 @@
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-chevron-down"></i>
+                    <i class="fas fa-minus"></i>
                   </button>
                 </div>
               </div>
               <div class="card-footer">
                 <div class="row">
                   <div class="col-sm-3 col-6">
-                    <h6 class="mb-0 w-100">
-                      <div class="description-block border-right">
+                    <div class="description-block border-right">
                         <div class="card direct-chat direct-chat-warning">
                             <div class="card-header">
                               <h3 class="card-title">Total de ventas</h3>
                               <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                  <i class="fas fa-chevron-down"></i>
+                                  <i class="fas fa-minus"></i>
                                 </button>
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                               <table class="table">
                                 <thead>
                                     <tr>
                                         <th>
-                                            <select class="form-control form-control-sm select2" style="align-content: center; width:120px; heigth: 60px; border: 2px solid: black;">
+                                            <select class="form-control select2" style="width: 100%;">
                                                 <option selected="selected">Data</option>
                                             </select>
                                         </th>
                                         <th>
-                                            <label for="" style="position: relative; rigth:20px;">$ 20000.00</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="$20000.00">
                                         </th>
                                     </tr>
                                     <tr>
@@ -173,8 +171,6 @@
                             
                           </div>
                     </div>
-                    </h6>
-                    
                     <!-- /.description-block -->
                   </div>
                   <!-- /.col -->
@@ -185,104 +181,92 @@
                               <h3 class="card-title">Documentos Electronicos</h3>
                               <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                  <i class="fas fa-chevron-down"></i>
+                                  <i class="fas fa-minus"></i>
                                 </button>
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
+                            
                               <table class="table">
                                 <thead>
                                     <tr>
-                                      <th colspan="1">
-                                        <label for="">Desde</label> <br>
-                                        <input type="date" name="from" id="from" style="align-content: center; width:120px; border: 2px solid: black;">
-                                    </th>
-                                    <th colspan="1">
-                                        <label for="">Hasta</label> <br>
-                                        <input type="date" name="to" id="to" style="align-content: center; width:120px; border: 2px solid: black;">
-                                    </th>
+                                        <th colspan="1">
+                                            <label for="">Desde</label> <br>
+                                            <input type="date" name="from" id="from">
+                                        </th>
+                                        <th colspan="1">
+                                            <label for="">Hasta</label> <br>
+                                            <input type="date" name="to" id="to">
+                                        </th>
                                       <th colspan="2" rowspan="10">
-                                        <!-- jquery cdn -->
-                                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-                                        <!-- jquery knob cdn -->
-                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
-                                        <input type="text" value="28" class="dial">
-                                        <script type="text/javascript">
-                                           
-                                        </script>
-                                          
-                                      </th>
-                                    </tr>
-                                 
-                               
-                                    <tr>
-                                      <th colspan="1">Facturas</th>
-                                      <th colspan="1">
-                                        <div class="progress" style="height: 12px;">
-                                          <div class="progress-bar" role="progressbar"
-                                          aria-valuemin="0" aria-valuemax="100" style="width:25%; background-color:lightgreen;">
-                                            <label for="">25</label>
+                                        <div class="col-6 col-md-3 text-center">
+                                            <div class="col-4 text-center">
+                                              
+                                              </div>
                                           </div>
-                                        </div>
                                       </th>
                                     </tr>
                                     <tr>
-                                      <th colspan="1">Retensiones</th>
-                                      <th colspan="1">
-                                        <div class="progress" style="height: 12px;">
-                                          <div class="progress-bar" role="progressbar"
-                                          aria-valuemin="0" aria-valuemax="100" style="width:45%; background-color:lightgreen;">
-                                            <label for="">45</label>
-                                          </div>
-                                        </div>
-                                      </th>
+                                        <th>
+                                            <label for="">Total</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1">
+                                        </th>
+                                        <th>
+                                            <label for="">Restante</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1">
+                                        </th>
                                     </tr>
                                     <tr>
-                                      <th colspan="1">Notas de Creditos</th>
-                                      <th colspan="1">
-                                        <div class="progress" style="height: 12px;">
-                                          <div class="progress-bar" role="progressbar"
-                                          aria-valuemin="0" aria-valuemax="100" style="width:28%; background-color:lightgreen;">
-                                            <label for="">28</label>
+                                        <th colspan="1">Facturas</th>
+                                        <th colspan="1">
+                                          <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                                              <label for="">70</label>
+                                            </div>
                                           </div>
-                                        </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="1">Retensiones</th>
+                                        <th colspan="1"><div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                          aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                                            <label for="">70</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="1">Notas de Creditos</th>
+                                        <th colspan="1"><div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                          aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                                            <label for="">70</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                      <th colspan="1">Notas de Debito</th>
+                                      <th colspan="1">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                                              <label for="">70</label>
                                       </th>
                                   </tr>
                                   <tr>
-                                    <th colspan="1">Notas de Debito</th>
+                                    <th colspan="1">Guias de Remision</th>
                                     <th colspan="1">
-                                      <div class="progress" style="height: 12px;">
-                                        <div class="progress-bar" role="progressbar"
-                                        aria-valuemin="0" aria-valuemax="100" style="width:65%; background-color:lightgreen;">
-                                          <label for="">65</label>
-                                        </div>
-                                      </div>
+                                      <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                                              <label for="">70</label>
                                     </th>
                                 </tr>
                                 <tr>
-                                  <th colspan="1">Guias de Remision</th>
+                                  <th colspan="1">Liquidacion de Compras</th>
                                   <th colspan="1">
-                                    <div class="progress" style="height: 12px;">
-                                      <div class="progress-bar" role="progressbar"
-                                      aria-valuemin="0" aria-valuemax="100" style="width:8%; background-color:lightgreen;">
-                                        <label for="">8</label>
-                                      </div>
-                                    </div>
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="70"
+                                            aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                                              <label for="">70</label>
                                   </th>
-                              </tr>
-                              <tr>
-                                <th colspan="1">Liquidacion de Compras</th>
-                                <th colspan="1">
-                                  <div class="progress" style="height: 12px;">
-                                    <div class="progress-bar" role="progressbar"
-                                    aria-valuemin="0" aria-valuemax="100" style="width:94%; background-color:lightgreen;">
-                                      <label for="">94</label>
-                                    </div>
-                                  </div>
-                                </th>
-                              </tr>
-                            </thead>
+                                </tr>
+                                  </thead>
                               </table>
           
                               
@@ -298,12 +282,12 @@
                               <h3 class="card-title">Total de ventas</h3>
                               <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                  <i class="fas fa-chevron-down"></i>
+                                  <i class="fas fa-minus"></i>
                                 </button>
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                               <table class="table">
                                 <thead>
                                     <tr>
@@ -359,18 +343,42 @@
                               <h3 class="card-title">Network Activities</h3>
                               <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                  <i class="fas fa-chevron-down"></i>
+                                  <i class="fas fa-minus"></i>
                                 </button>
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                               <div class="row">
-                               
-                              <canvas id="revenue-chart-canvas" style="width:100%;max-width:600px; position: relative; right:-80px;"></canvas>
-                              <script>
-                                                              
-                              </script>
+                                <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                            <script>
+                            var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+                            var yValues = [55, 49, 44, 24, 15];
+                            var barColors = [
+                              "#b91d47",
+                              "#00aba9",
+                              "#2b5797",
+                              "#e8c3b9",
+                              "#1e7145"
+                            ];
+                            
+                            new Chart("myChart", {
+                              type: "pie",
+                              data: {
+                                labels: xValues,
+                                datasets: [{
+                                  backgroundColor: barColors,
+                                  data: yValues
+                                }]
+                              },
+                              options: {
+                                title: {
+                                  display: true,
+                                  text: "World Wide Wine Production 2018"
+                                }
+                              }
+                            });
+                            </script> 
                               </div>
                             </div>
                         </div>
@@ -384,23 +392,23 @@
                               <h3 class="card-title">Cuentas por Cobrar</h3>
                               <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                  <i class="fas fa-chevron-down"></i>
+                                  <i class="fas fa-minus"></i>
                                 </button>
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                                 
                               <table class="table">
                                 <thead>
                                   <tr>
                                     <th colspan="2">
-                                        <select class="form-control select2" style="align-content: center; width:120px; border: 2px solid: black;">
+                                        <select class="form-control select2" style="width: 100%;">
                                             <option selected="selected">Data</option>
                                         </select>
                                     </th>
                                     <th colspan="2">
-                                        <input type="text" class="form-control" id="exampleInputEmail1" style="align-content: center; width:70px; position: relative; rigth:-20px;" >
+                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="$20000.00">
                                     </th>
                                   </tr>
                                     <tr>
@@ -434,18 +442,18 @@
                               <h3 class="card-title">Grafico 1</h3>
                               <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                  <i class="fas fa-chevron-down"></i>
+                                  <i class="fas fa-minus"></i>
                                 </button>
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                                
-                              <table class="table" >
+                              <table class="table">
                                 <thead>
                                   <tr>
                                     <th colspan="2">
-                                        <select class="form-control select2" style="align-content: center; width:120px; heigth: 60px; border: 2px solid: black;">
+                                        <select class="form-control select2" style="width: 100%;">
                                             <option selected="selected">Data</option>
                                         </select>
                                     </th>
@@ -453,16 +461,12 @@
                                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="$20000.00">
                                     </th>
                                   </tr>
-                                  <tr>
-                                    <th colspan="3">
-                                      <canvas id="mychart-1" style="width:350px; heigth:350px; position:relative; left:-95px"></canvas>
-                                      <script>
-                                        
-                                        </script>
-                                    </th>
-                                  </tr>
                                   </thead>
-                                  
+                                  <tbody>
+                                    <tr>
+                                       <th colspan="4">Grafico de torta</th>
+                                    </tr>
+                                  </tbody>
                               </table>
                               
                             </div>
@@ -477,12 +481,12 @@
                               <h3 class="card-title">Grafico 2</h3>
                               <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                  <i class="fas fa-chevron-down"></i>
+                                  <i class="fas fa-minus"></i>
                                 </button>
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                               <table class="table">
                                 <thead>
                                   <tr>
@@ -495,15 +499,12 @@
                                         <input type="text" class="form-control" id="exampleInputEmail1" placeholder="$20000.00">
                                     </th>
                                   </tr>
-                                  <tr>
-                                    <th colspan="3">
-                                      <canvas id="mychart-2" style="width:400px; heigth:400px; position:relative; left:-95px"></canvas>
-                                      <script>
-                                        
-                                        </script>
-                                    </th>
-                                  </tr>
                                   </thead>
+                                  <tbody>
+                                    <tr>
+                                       <th colspan="4">Grafico de torta</th>
+                                    </tr>
+                                  </tbody>
                               </table>
                             </div>
                         </div>
@@ -517,17 +518,22 @@
                               <h3 class="card-title">Country Stast</h3>
                               <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                  <i class="fas fa-chevron-down"></i>
+                                  <i class="fas fa-minus"></i>
                                 </button>
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
-                              <canvas id="sales-chart" width="400" height="290"></canvas>
-                             
-                              <script>
+                            <div class="card-body">
                                 
-                                </script>
+                              <table class="table">
+                                  <tbody>
+                                    <tr>
+                                        <th colspan="4">Grafico de Barras</th>
+                                    </tr>
+                                  </tbody>
+                              </table>
+          
+                              
                             </div>
                         </div>
                     </div>
@@ -540,12 +546,12 @@
                               <h3 class="card-title">Efectivo</h3>
                               <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                  <i class="fas fa-chevron-down"></i>
+                                  <i class="fas fa-minus"></i>
                                 </button>
                               </div>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body" style="height: 300px;">
+                            <div class="card-body">
                               <table class="table">
                                 <thead>
                                     <tr>
@@ -642,7 +648,7 @@
           </div>
 
     </div>
-    <script src="{{ asset('js/charts.js') }}"></script>
+   
     
  
        
