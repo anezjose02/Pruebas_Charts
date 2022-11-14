@@ -18,13 +18,16 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
+//GET CHARTS
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('getdial','HomeController@getdial');
 
 Route::middleware(['auth', 'activeuser'])->group(function () {
+
 
     //Rutas para CONSTANTES
     Route::get("/get-constante-modulos", "Contantes@modulos");

@@ -1,9 +1,14 @@
 @extends('adminlte::page')
 
 @section('title', 'Inicio')
+@section('page-style')
+  <!-- Page css files -->
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+@endsection
 
 @section('content_header')
     {{-- <h1 class="m-0 ">Inicio </h1> --}}
+    
 @stop
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -207,33 +212,54 @@
                                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                                         <!-- jquery knob cdn -->
                                         <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
-                                        <input type="text" value="28" class="dial">
+                                        <input type="text" value="" class="dial" id="dial" name="dial">
                                         <script type="text/javascript">
-                                           
+                                           $(document).ready(function () {
+                                            let _token   = $('meta[name="csrf-token"]').attr('content');
+                                            $.ajax({
+                                              type: "get",
+                                              url: '{{URL::to('getdial')}}',
+                                              data:  {_token: _token},
+                                              success: function (response) {
+                                                console.log('esta es la respuesta;', response);
+                                                let total = response.length;
+                                                console.log('this is count for dial', total);
+                                                $('#dial').val(total);
+                                              }
+                                            });
+                                           });
                                         </script>
                                           
                                       </th>
                                     </tr>
-                                 
-                               
+                                    @php
+                                        use Illuminate\Support\Facades\DB;
+                                        $retenciones = DB::table('retenciones')->count();
+                                        $facturascompensacions = DB::table('facturascompensacions')->count();
+                                        $notacreditos = DB::table('notacreditos')->count();
+                                        $notadebitos = DB::table('notadebitos')->count();
+                                        $guiaremisions = DB::table('guiaremisions')->count();
+                                        $liquidacioncompras = DB::table('liquidacioncompras')->count();
+                                    @endphp
+                                    
                                     <tr>
                                       <th colspan="1">Facturas</th>
                                       <th colspan="1">
                                         <div class="progress" style="height: 12px;">
                                           <div class="progress-bar" role="progressbar"
-                                          aria-valuemin="0" aria-valuemax="100" style="width:25%; background-color:lightgreen;">
-                                            <label for="">25</label>
+                                          aria-valuemin="0" aria-valuemax="100" style="width:{{ $facturascompensacions }}%; background-color:lightgreen;">
+                                            <label for="">{{ $facturascompensacions }}</label>
                                           </div>
                                         </div>
                                       </th>
                                     </tr>
                                     <tr>
-                                      <th colspan="1">Retensiones</th>
+                                      <th colspan="1">Retenciones</th>
                                       <th colspan="1">
                                         <div class="progress" style="height: 12px;">
                                           <div class="progress-bar" role="progressbar"
-                                          aria-valuemin="0" aria-valuemax="100" style="width:45%; background-color:lightgreen;">
-                                            <label for="">45</label>
+                                          aria-valuemin="0" aria-valuemax="100" style="width:{{ $retenciones }}%; background-color:lightgreen;">
+                                            <label for="">{{ $retenciones }}</label>
                                           </div>
                                         </div>
                                       </th>
@@ -243,8 +269,8 @@
                                       <th colspan="1">
                                         <div class="progress" style="height: 12px;">
                                           <div class="progress-bar" role="progressbar"
-                                          aria-valuemin="0" aria-valuemax="100" style="width:28%; background-color:lightgreen;">
-                                            <label for="">28</label>
+                                          aria-valuemin="0" aria-valuemax="100" style="width:{{ $notacreditos }}%; background-color:lightgreen;">
+                                            <label for="">{{ $notacreditos }}</label>
                                           </div>
                                         </div>
                                       </th>
@@ -254,8 +280,8 @@
                                     <th colspan="1">
                                       <div class="progress" style="height: 12px;">
                                         <div class="progress-bar" role="progressbar"
-                                        aria-valuemin="0" aria-valuemax="100" style="width:65%; background-color:lightgreen;">
-                                          <label for="">65</label>
+                                        aria-valuemin="0" aria-valuemax="100" style="width:{{ $notadebitos }}%; background-color:lightgreen;">
+                                          <label for="">{{ $notadebitos }}</label>
                                         </div>
                                       </div>
                                     </th>
@@ -265,8 +291,8 @@
                                   <th colspan="1">
                                     <div class="progress" style="height: 12px;">
                                       <div class="progress-bar" role="progressbar"
-                                      aria-valuemin="0" aria-valuemax="100" style="width:8%; background-color:lightgreen;">
-                                        <label for="">8</label>
+                                      aria-valuemin="0" aria-valuemax="100" style="width:{{ $guiaremisions }}%; background-color:lightgreen;">
+                                        <label for="">{{ $guiaremisions }}</label>
                                       </div>
                                     </div>
                                   </th>
@@ -276,8 +302,8 @@
                                 <th colspan="1">
                                   <div class="progress" style="height: 12px;">
                                     <div class="progress-bar" role="progressbar"
-                                    aria-valuemin="0" aria-valuemax="100" style="width:94%; background-color:lightgreen;">
-                                      <label for="">94</label>
+                                    aria-valuemin="0" aria-valuemax="100" style="width:{{ $liquidacioncompras }}%; background-color:lightgreen;">
+                                      <label for="">{{ $liquidacioncompras }}</label>
                                     </div>
                                   </div>
                                 </th>

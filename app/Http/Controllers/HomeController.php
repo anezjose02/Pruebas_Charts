@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
+use Illuminate\Support\Facades\DB;
 use App\Globales;
 use Illuminate\Http\Request;
 
@@ -82,4 +83,23 @@ class HomeController extends Controller
 
         return back()->with("success","Variables globales actualizadas correctamente.");
     }
+
+    public function getdial(Request $request){
+        if($request->ajax())
+        {
+            /*$array = ['retenciones', 'facturascompensacions', 'notacreditos', 'notadebitos', 'guiaremisions', 'liquidacioncompras'];
+            $vendedor = 0;
+            for ($i=0; $i <count($array) ; $i++) { 
+                $sql = DB::table($array[$i])->count();
+                $vendedor = $vendedor + $sql;
+                }
+            if($vendedor){
+            return ($vendedor);
+        }*/
+        $sql= DB::table('documentos')->where('user_id', Auth::user()->id)->get();
+         if ($sql) {
+            return ($sql);
+         }
+    }
+}
 }
