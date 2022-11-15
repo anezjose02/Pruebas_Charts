@@ -25,6 +25,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('getdial','HomeController@getdial');
+Route::get('progressbar','HomeController@progressbar');
 
 Route::middleware(['auth', 'activeuser'])->group(function () {
 

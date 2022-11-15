@@ -99,7 +99,70 @@ class HomeController extends Controller
         $sql= DB::table('documentos')->where('user_id', Auth::user()->id)->get();
          if ($sql) {
             return ($sql);
-         }
+            }
+        }
     }
-}
+
+    public function progressbar(Request $request){
+        if($request->ajax())
+        {
+            $user_id =  Auth::user()->id;
+            $from=$request->from;
+            $to=$request->to;
+            //Facturas
+            $facturas = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('venta_id', '>', 0)
+            ->where('created_at','>=', $from)
+            ->whereDate('created_at', '<=', $to)
+            ->get();
+            //Retenciones
+            $retenciones = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('retenciones_id', '>', 0)
+            ->where('created_at','>=', $from)
+            ->whereDate('created_at', '<=', $to)
+            ->get();
+            //Notas de Credito
+            $nota_credito = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('notacredito_id', '>', 0)
+            ->where('created_at','>=', $from)
+            ->whereDate('created_at', '<=', $to)
+            ->get();
+            //Notas de Debito
+            $nota_debito = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('notadebito_id', '>', 0)
+            ->where('created_at','>=', $from)
+            ->whereDate('created_at', '<=', $to)
+            ->get();
+            //Guias Remision
+            $guia_remision = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('guiaremision_id', '>', 0)
+            ->where('created_at','>=', $from)
+            ->whereDate('created_at', '<=', $to)
+            ->get();
+            //Liquidaciones
+            $liquidacion = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('liquidacion_id', '>', 0)
+            ->where('created_at','>=', $from)
+            ->whereDate('created_at', '<=', $to)
+            ->get();
+            //Array con las consultas
+            $sql = [
+                "facturas" => $facturas,
+                "retenciones" => $retenciones,
+                "nota_credito" => $nota_credito,
+                "nota_debito" => $nota_debito,
+                "guia_remision" => $guia_remision,
+                "liquidacion" => $liquidacion,
+                ];
+         if ($sql) {
+            return ($sql);
+            }
+        }
+    }
 }

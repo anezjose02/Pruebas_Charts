@@ -212,43 +212,56 @@
                                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
                                         <!-- jquery knob cdn -->
                                         <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"></script>
-                                        <input type="text" value="" class="dial" id="dial" name="dial">
-                                        <script type="text/javascript">
-                                           $(document).ready(function () {
-                                            let _token   = $('meta[name="csrf-token"]').attr('content');
-                                            $.ajax({
-                                              type: "get",
-                                              url: '{{URL::to('getdial')}}',
-                                              data:  {_token: _token},
-                                              success: function (response) {
-                                                console.log('esta es la respuesta;', response);
-                                                let total = response.length;
-                                                console.log('this is count for dial', total);
-                                                $('#dial').val(total);
-                                              }
-                                            });
-                                           });
-                                        </script>
+                                        <input type="text" value="0" class="dial" id="dial" name="dial">
                                           
                                       </th>
                                     </tr>
-                                    @php
-                                        use Illuminate\Support\Facades\DB;
-                                        $retenciones = DB::table('retenciones')->count();
-                                        $facturascompensacions = DB::table('facturascompensacions')->count();
-                                        $notacreditos = DB::table('notacreditos')->count();
-                                        $notadebitos = DB::table('notadebitos')->count();
-                                        $guiaremisions = DB::table('guiaremisions')->count();
-                                        $liquidacioncompras = DB::table('liquidacioncompras')->count();
-                                    @endphp
+                                    <script type="text/javascript">
+                                    $('#from').blur(function () { 
+                                      $('#to').val('');
+                                      
+                                    });
+                                    </script>
+                                    <script type="text/javascript">
+                                      $('#to').blur(function () { 
+                                        console.log('Pase por aqui!!');
+                                        let from = $('#from').val();
+                                        let to = $('#to').val();
+                                        console.log('Este es el from', from, 'este es el to',to);
+                                        let _token   = $('meta[name="csrf-token"]').attr('content');
+                                       $.ajax({
+                                         type: "get",
+                                         url: '{{URL::to('progressbar')}}',
+                                         data:  {_token: _token, from: from, to: to},
+                                         success: function (response) {
+                                           console.log('esta es la respuesta con las fechas;', response);
+                                           let totalF = response.facturas.length;
+                                           let totalR = response.retenciones.length;
+                                           let totalC = response.nota_credito.length;
+                                           let totalD = response.nota_debito.length;
+                                           let totalG = response.guia_remision.length;
+                                           let totalL = response.liquidacion.length;
+                                           let total = totalF+totalR+totalC+totalD+totalG+totalL;
+                                           document.querySelector('#facturas').innerText = totalF;
+                                           document.querySelector('#retenciones').innerText = totalR;
+                                           document.querySelector('#nota_credito').innerText = totalC;
+                                           document.querySelector('#nota_debito').innerText = totalD;
+                                           document.querySelector('#guia_remision').innerText = totalG;
+                                           document.querySelector('#liquidacion').innerText = totalL;
+                                           $('#dial').val(total);
+                                           
+                                         }
+                                       });
+                                      });
+                                   </script>
                                     
                                     <tr>
                                       <th colspan="1">Facturas</th>
                                       <th colspan="1">
                                         <div class="progress" style="height: 12px;">
                                           <div class="progress-bar" role="progressbar"
-                                          aria-valuemin="0" aria-valuemax="100" style="width:{{ $facturascompensacions }}%; background-color:lightgreen;">
-                                            <label for="">{{ $facturascompensacions }}</label>
+                                          aria-valuemin="0" aria-valuemax="10" style="background-color:lightgreen;">
+                                            <label for="" id="facturas">0</label>
                                           </div>
                                         </div>
                                       </th>
@@ -258,8 +271,8 @@
                                       <th colspan="1">
                                         <div class="progress" style="height: 12px;">
                                           <div class="progress-bar" role="progressbar"
-                                          aria-valuemin="0" aria-valuemax="100" style="width:{{ $retenciones }}%; background-color:lightgreen;">
-                                            <label for="">{{ $retenciones }}</label>
+                                          aria-valuemin="0" aria-valuemax="100" style="background-color:lightgreen;">
+                                            <label for="" id="retenciones">0</label>
                                           </div>
                                         </div>
                                       </th>
@@ -269,8 +282,8 @@
                                       <th colspan="1">
                                         <div class="progress" style="height: 12px;">
                                           <div class="progress-bar" role="progressbar"
-                                          aria-valuemin="0" aria-valuemax="100" style="width:{{ $notacreditos }}%; background-color:lightgreen;">
-                                            <label for="">{{ $notacreditos }}</label>
+                                          aria-valuemin="0" aria-valuemax="100" style=" background-color:lightgreen;">
+                                            <label for="" id="nota_credito">0</label>
                                           </div>
                                         </div>
                                       </th>
@@ -280,8 +293,8 @@
                                     <th colspan="1">
                                       <div class="progress" style="height: 12px;">
                                         <div class="progress-bar" role="progressbar"
-                                        aria-valuemin="0" aria-valuemax="100" style="width:{{ $notadebitos }}%; background-color:lightgreen;">
-                                          <label for="">{{ $notadebitos }}</label>
+                                        aria-valuemin="0" aria-valuemax="100" style=" background-color:lightgreen;">
+                                          <label for="" id="nota_debito">0</label>
                                         </div>
                                       </div>
                                     </th>
@@ -291,8 +304,8 @@
                                   <th colspan="1">
                                     <div class="progress" style="height: 12px;">
                                       <div class="progress-bar" role="progressbar"
-                                      aria-valuemin="0" aria-valuemax="100" style="width:{{ $guiaremisions }}%; background-color:lightgreen;">
-                                        <label for="">{{ $guiaremisions }}</label>
+                                      aria-valuemin="0" aria-valuemax="100" style=" background-color:lightgreen;">
+                                        <label for="" id="guia_remision">0</label>
                                       </div>
                                     </div>
                                   </th>
@@ -302,8 +315,8 @@
                                 <th colspan="1">
                                   <div class="progress" style="height: 12px;">
                                     <div class="progress-bar" role="progressbar"
-                                    aria-valuemin="0" aria-valuemax="100" style="width:{{ $liquidacioncompras }}%; background-color:lightgreen;">
-                                      <label for="">{{ $liquidacioncompras }}</label>
+                                    aria-valuemin="0" aria-valuemax="100" style=" background-color:lightgreen;">
+                                      <label for="" id="liquidacion">0</label>
                                     </div>
                                   </div>
                                 </th>
