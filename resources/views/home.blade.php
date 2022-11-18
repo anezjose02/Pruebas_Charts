@@ -69,11 +69,12 @@
               url: '{{URL::to('cardsD')}}',
               data:  {_token: _token},
               success: function (response) {
-                let totalF = response.facturas.length;
+                let totalF = response.facturas_pendientes.length;
+                let totalIN = response.facturas_IsNull.length;
                 let totalDA = response.documentos_autorizados.length;
                 let totalDR = response.documentos_rechazados.length;
                 let totalFDN = response.documentos_anulados.length;
-                document.getElementById("facturas").innerHTML = totalF;
+                document.getElementById("facturas").innerHTML = totalF+totalIN;
                 document.getElementById("documentos_autorizados").innerHTML = totalDA;
                 document.getElementById("documentos_rechazados").innerHTML = totalDR;
                 document.getElementById("documentos_anulados").innerHTML = totalFDN;
@@ -87,7 +88,7 @@
             <div class="small-box bg-primary">
                 <div class="inner">
                     <h3 id="facturas"></h3>
-                    <p>Facturas</p>
+                    <p>PENDIENTES</p>
                 </div>
                 <div class="icon">
                    

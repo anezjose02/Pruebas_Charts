@@ -87,12 +87,21 @@ class HomeController extends Controller
     public function cardsD(Request $request){
         if($request->ajax())
         {
+
             $user_id =  Auth::user()->id;
-            //Facturas
-            $facturas = DB::table('documentos')
+
+            //Facturas Pendiente
+            $facturas_pendiente = DB::table('documentos')
             ->where('user_id', $user_id)
             ->where('estado', 'PENDIENTE')
-            //->whereNull('estado')
+            ->whereNull('estado_documento')
+            ->get();
+            //Facturas IS NULL
+            $facturas_IsNull = DB::table('documentos')
+            ->where('user_id', $user_id)
+            //->where('estado', 'PENDIENTE')
+            ->whereNull('estado')
+            ->whereNull('estado_documento')
             ->get();
             //Documentos Autorizados
             $documentos_autorizados = DB::table('documentos')
@@ -107,11 +116,13 @@ class HomeController extends Controller
             //Documentos Anulados
             $documentos_anulados = DB::table('documentos')
             ->where('user_id', $user_id)
-            ->where('estado', 'ANULADOS')
+            //->where('estado', 'ANULADOS')
+            ->whereNotNull('estado_documento')
             ->get();
 
             $sql = [
-                "facturas" => $facturas,
+                "facturas_pendientes" => $facturas_pendiente,
+                "facturas_IsNull" => $facturas_IsNull,
                 "documentos_autorizados" => $documentos_autorizados,
                 "documentos_rechazados" => $documentos_rechazados,
                 "documentos_anulados" => $documentos_anulados,
