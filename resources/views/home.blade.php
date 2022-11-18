@@ -4,7 +4,10 @@
 @section('page-style')
   <!-- Page css files -->
 <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+
 @endsection
+
 
 @section('content_header')
     {{-- <h1 class="m-0 ">Inicio </h1> --}}
@@ -12,6 +15,10 @@
 @stop
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 @stop
 @section('content')
@@ -54,13 +61,33 @@
     </div>
 </div>
     <div class="row">
-
+        <script>
+           $(document).ready(function () {
+            let _token   = $('meta[name="csrf-token"]').attr('content');
+            $.ajax({
+              type: "get",
+              url: '{{URL::to('cardsD')}}',
+              data:  {_token: _token},
+              success: function (response) {
+                let totalF = response.facturas.length;
+                let totalDA = response.documentos_autorizados.length;
+                let totalDR = response.documentos_rechazados.length;
+                let totalFDN = response.documentos_anulados.length;
+                document.getElementById("facturas").innerHTML = totalF;
+                document.getElementById("documentos_autorizados").innerHTML = totalDA;
+                document.getElementById("documentos_rechazados").innerHTML = totalDR;
+                document.getElementById("documentos_anulados").innerHTML = totalFDN;
+              }
+            });
+           });
+          
+        </script>
         <div class="col-lg-3 col-6">
          
             <div class="small-box bg-primary">
                 <div class="inner">
-                    <h3>150</h3>
-                    <p>New Orders</p>
+                    <h3 id="facturas"></h3>
+                    <p>Facturas</p>
                 </div>
                 <div class="icon">
                    
@@ -74,8 +101,8 @@
 
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
-                    <p>Bounce Rate</p>
+                    <h3 id="documentos_autorizados"></h3>
+                    <p>Documentos Autorizados</p>
                 </div>
                 <div class="icon">
                     <i class="ion fas fa-percent"></i>
@@ -88,8 +115,8 @@
 
             <div class="small-box bg-warning">
                 <div class="inner">
-                    <h3>44</h3>
-                    <p>User Registrations</p>
+                    <h3 id="documentos_rechazados"></h3>
+                    <p>Documentos Rechazados</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-users"></i>
@@ -103,8 +130,8 @@
 
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>65</h3>
-                    <p>Unique Visitors</p>
+                    <h3 id="documentos_anulados"></h3>
+                    <p>Documentos Anulados</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-user-check"></i>
@@ -218,8 +245,11 @@
                                     </tr>
                                     <script type="text/javascript">
                                     $('#from').blur(function () { 
-                                      $('#to').val('');
                                       
+                                      let from = $('#from').val();
+                                      $('#to').val('');
+                                      //$('#to').min(from);
+                                      document.getElementById("to").min=from;
                                     });
                                     </script>
                                     <script type="text/javascript">

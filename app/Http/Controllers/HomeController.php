@@ -84,19 +84,41 @@ class HomeController extends Controller
         return back()->with("success","Variables globales actualizadas correctamente.");
     }
 
-    public function getdial(Request $request){
+    public function cardsD(Request $request){
         if($request->ajax())
         {
-            /*$array = ['retenciones', 'facturascompensacions', 'notacreditos', 'notadebitos', 'guiaremisions', 'liquidacioncompras'];
-            $vendedor = 0;
-            for ($i=0; $i <count($array) ; $i++) { 
-                $sql = DB::table($array[$i])->count();
-                $vendedor = $vendedor + $sql;
-                }
-            if($vendedor){
-            return ($vendedor);
-        }*/
-        $sql= DB::table('documentos')->where('user_id', Auth::user()->id)->get();
+            $user_id =  Auth::user()->id;
+            //Facturas
+            $facturas = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('estado', 'PENDIENTE')
+            //->whereNull('estado')
+            ->get();
+            //Documentos Autorizados
+            $documentos_autorizados = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('estado', 'AUTORIZADO')
+            ->get();
+            //Documentos Rechazados
+            $documentos_rechazados = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('estado', 'RECHAZADO')
+            ->get();
+            //Documentos Anulados
+            $documentos_anulados = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('estado', 'ANULADOS')
+            ->get();
+
+            $sql = [
+                "facturas" => $facturas,
+                "documentos_autorizados" => $documentos_autorizados,
+                "documentos_rechazados" => $documentos_rechazados,
+                "documentos_anulados" => $documentos_anulados,
+                
+                ];
+            
+        
          if ($sql) {
             return ($sql);
             }
