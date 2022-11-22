@@ -108,6 +108,11 @@ class HomeController extends Controller
             ->where('user_id', $user_id)
             ->where('estado', 'AUTORIZADO')
             ->get();
+            //Documentos Recibidos
+            $documentos_recibido = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('estado', 'RECIBIDO')
+            ->get();
             //Documentos Rechazados
             $documentos_rechazados = DB::table('documentos')
             ->where('user_id', $user_id)
@@ -124,10 +129,27 @@ class HomeController extends Controller
                 "facturas_pendientes" => $facturas_pendiente,
                 "facturas_IsNull" => $facturas_IsNull,
                 "documentos_autorizados" => $documentos_autorizados,
+                "documentos_recibido" => $documentos_recibido,
                 "documentos_rechazados" => $documentos_rechazados,
                 "documentos_anulados" => $documentos_anulados,
                 
                 ];
+            
+        
+         if ($sql) {
+            return ($sql);
+            }
+        }
+    }
+
+
+    public function getdial (Request $request){
+        if($request->ajax())
+        {
+
+            $user_id =  Auth::user()->id;
+
+            $sql = DB::table('documentos')->where('user_id', $user_id)->get();
             
         
          if ($sql) {
@@ -183,6 +205,55 @@ class HomeController extends Controller
             ->where('liquidacion_id', '>', 0)
             ->where('created_at','>=', $from)
             ->whereDate('created_at', '<=', $to)
+            ->get();
+            //Array con las consultas
+            $sql = [
+                "facturas" => $facturas,
+                "retenciones" => $retenciones,
+                "nota_credito" => $nota_credito,
+                "nota_debito" => $nota_debito,
+                "guia_remision" => $guia_remision,
+                "liquidacion" => $liquidacion,
+                ];
+         if ($sql) {
+            return ($sql);
+            }
+        }
+    }
+
+    public function progressbarstart(Request $request){
+        if($request->ajax())
+        {
+            $user_id =  Auth::user()->id;
+            //Facturas
+            $facturas = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('venta_id', '>', 0)
+            ->get();
+            //Retenciones
+            $retenciones = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('retenciones_id', '>', 0)
+            ->get();
+            //Notas de Credito
+            $nota_credito = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('notacredito_id', '>', 0)
+            ->get();
+            //Notas de Debito
+            $nota_debito = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('notadebito_id', '>', 0)
+            ->get();
+            //Guias Remision
+            $guia_remision = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('guiaremision_id', '>', 0)
+            ->get();
+            //Liquidaciones
+            $liquidacion = DB::table('documentos')
+            ->where('user_id', $user_id)
+            ->where('liquidacion_id', '>', 0)
             ->get();
             //Array con las consultas
             $sql = [

@@ -5,7 +5,7 @@ use App\Globales;
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-
+   
     {{-- Base Meta Tags --}}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,9 +24,9 @@ use App\Globales;
 
     {{-- Custom stylesheets (pre AdminLTE) --}}
     @yield('adminlte_css_pre')
+   
 
-
-
+    <link rel="stylesheet" href="{{ asset('css/DonutWidget.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -136,7 +136,11 @@ use App\Globales;
             src="https://code.jquery.com/jquery-3.6.1.js"
         integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
         crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="{{ asset('js/DonutWidget.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        
+
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>

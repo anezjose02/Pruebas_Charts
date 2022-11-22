@@ -1,10 +1,39 @@
 $(".dial").knob({
     'min':0,
-    'max':100,
+    'max':1000,
     'readOnly': true,
     'width': 175,
     'height': 200,
+    'inputColor': 'black',
+    'fgColor': 'blue',
+    'displayPrevious ': false,
+    'dynamicDraw': true,
+    'change': function(v) {
+      $(".dial").val(v).trigger('change');
+    }
 });
+
+$(".example").DonutWidget({
+
+
+  // these are default options
+  max: 1000, 
+  value: valueDoc, 
+  text: valueDoc,  
+  caption: "Limite 1000", 
+  template: [
+    '<div class="donut-hole"><span class="donut-filling"></div>', 
+    '<div class="donut-bite" data-segment-index="0"></div>', 
+    '<div class="donut-bite" data-segment-index="1"></div>', 
+    '<div class="donut-caption-wrapper"><span class="donut-caption"></span></div>'
+  ].join(''), 
+  colors: {
+    primary: "#ffe600",
+    background: "#eee"
+  },
+  size: "large"
+  
+  });
 
 // Sales chart
 var salesChartCanvas = document.getElementById('revenue-chart-canvas').getContext('2d')

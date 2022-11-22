@@ -276,32 +276,20 @@
                                                                 to: to
                                                             },
                                                             success: function(response) {
-                                                                //console.log('esta es la respuesta con las fechas;', response);
+                                                                console.log('esta es la respuesta con las fechas;', response);
                                                                 let totalF = response.facturas.length;
                                                                 let totalR = response.retenciones.length;
                                                                 let totalC = response.nota_credito.length;
                                                                 let totalD = response.nota_debito.length;
-                                                                let totalG = response.guia_remision.length;
+                                                                //let totalG = response.guia_remision.length;
                                                                 let totalL = response.liquidacion.length;
-                                                                let total = totalF + totalR + totalC + totalD + totalL + totalG;
+                                                                let total = totalF + totalR + totalC + totalD + totalL;
                                                                 document.querySelector('#facturas_bar').innerText = totalF;
-                                                                document.querySelector('#progress-bar-facturas').style.width = "" + (totalF * 100) /
-                                                                    100 + "%";
                                                                 document.querySelector('#retenciones').innerText = totalR;
-                                                                document.querySelector('#progress-bar-retenciones').style.width = "" + (totalR *
-                                                                    100) / 100 + "%";
                                                                 document.querySelector('#nota_credito').innerText = totalC;
-                                                                document.querySelector('#progress-bar-notaC').style.width = "" + (totalC * 100) /
-                                                                    100 + "%";
                                                                 document.querySelector('#nota_debito').innerText = totalD;
-                                                                document.querySelector('#progress-bar-notaD').style.width = "" + (totalD * 100) /
-                                                                    100 + "%";
-                                                                document.querySelector('#guia_remision').innerText = totalG;
-                                                                document.querySelector('#progress-bar-remision').style.width = "" + (totalG * 100) /
-                                                                    100 + "%";
+                                                                //document.querySelector('#guia_remision').innerText = totalG;
                                                                 document.querySelector('#liquidacion').innerText = totalL;
-                                                                document.querySelector('#progress-bar-liquidacion').style.width = "" + (totalL *
-                                                                    100) / 100 + "%";
                                                                 var widget = DonutWidget.draw($(".example"), { // these are default options
                                                                     max: 1000,
                                                                     value: total,
@@ -349,8 +337,8 @@
                                                                         '<div class="donut-caption-wrapper"><span class="donut-caption"></span></div>'
                                                                     ].join(''),
                                                                     colors: {
-                                                                        primary: "rgba(138,205,232)",
-                                                                        background: "#eee",
+                                                                        primary: "blue",
+                                                                        background: "#EB0F0F",
 
                                                                     },
                                                                     size: "large"
@@ -370,31 +358,8 @@
                                                                 _token: _token
                                                             },
                                                             success: function(response) {
-                                                                let totalF = response.facturas.length;
-                                                                let totalR = response.retenciones.length;
-                                                                let totalC = response.nota_credito.length;
-                                                                let totalD = response.nota_debito.length;
-                                                                let totalG = response.guia_remision.length;
-                                                                let totalL = response.liquidacion.length;
-                                                                document.querySelector('#facturas_bar').innerText = totalF;
-                                                                document.querySelector('#progress-bar-facturas').style.width = "" + (totalF * 100) /
-                                                                    100 + "%";
-                                                                document.querySelector('#retenciones').innerText = totalR;
-                                                                document.querySelector('#progress-bar-retenciones').style.width = "" + (totalR *
-                                                                    100) / 100 + "%";
-                                                                document.querySelector('#nota_credito').innerText = totalC;
-                                                                document.querySelector('#progress-bar-notaC').style.width = "" + (totalC * 100) /
-                                                                    100 + "%";
-                                                                document.querySelector('#nota_debito').innerText = totalD;
-                                                                document.querySelector('#progress-bar-notaD').style.width = "" + (totalD * 100) /
-                                                                    100 + "%";
-                                                                document.querySelector('#guia_remision').innerText = totalG;
-                                                                document.querySelector('#progress-bar-remision').style.width = "" + (totalG * 100) /
-                                                                    100 + "%";
-                                                                document.querySelector('#liquidacion').innerText = totalL;
-                                                                document.querySelector('#progress-bar-liquidacion').style.width = "" + (totalL *
-                                                                    100) / 100 + "%";
-
+                                                                let total_dial = response.length;
+                                                                $('.dial').val(total_dial).trigger("change");
                                                             }
                                                         });
                                                     });
@@ -404,9 +369,8 @@
                                                     <th colspan="1">
                                                         <div class="progress" style="height: 12px;">
                                                             <div class="progress-bar" role="progressbar"
-                                                                aria-valuemin="0" aria-valuemax="100"
-                                                                style="background-color:lightgreen;"
-                                                                id="progress-bar-facturas">
+                                                                aria-valuemin="0" aria-valuemax="10"
+                                                                style="background-color:lightgreen;">
                                                                 <label for="" id="facturas_bar">0</label>
                                                             </div>
                                                         </div>
@@ -418,8 +382,7 @@
                                                         <div class="progress" style="height: 12px;">
                                                             <div class="progress-bar" role="progressbar"
                                                                 aria-valuemin="0" aria-valuemax="100"
-                                                                style="background-color:lightgreen;"
-                                                                id="progress-bar-retenciones">
+                                                                style="background-color:lightgreen;">
                                                                 <label for="" id="retenciones">0</label>
                                                             </div>
                                                         </div>
@@ -431,8 +394,7 @@
                                                         <div class="progress" style="height: 12px;">
                                                             <div class="progress-bar" role="progressbar"
                                                                 aria-valuemin="0" aria-valuemax="100"
-                                                                style=" background-color:lightgreen;"
-                                                                id="progress-bar-notaC">
+                                                                style=" background-color:lightgreen;">
                                                                 <label for="" id="nota_credito">0</label>
                                                             </div>
                                                         </div>
@@ -444,8 +406,7 @@
                                                         <div class="progress" style="height: 12px;">
                                                             <div class="progress-bar" role="progressbar"
                                                                 aria-valuemin="0" aria-valuemax="100"
-                                                                style=" background-color:lightgreen;"
-                                                                id="progress-bar-notaD">
+                                                                style=" background-color:lightgreen;">
                                                                 <label for="" id="nota_debito">0</label>
                                                             </div>
                                                         </div>
@@ -457,8 +418,7 @@
                                                         <div class="progress" style="height: 12px;">
                                                             <div class="progress-bar" role="progressbar"
                                                                 aria-valuemin="0" aria-valuemax="100"
-                                                                style=" background-color:lightgreen;"
-                                                                id="progress-bar-remision">
+                                                                style=" background-color:lightgreen;">
                                                                 <label for="" id="guia_remision">0</label>
                                                             </div>
                                                         </div>
@@ -470,8 +430,7 @@
                                                         <div class="progress" style="height: 12px;">
                                                             <div class="progress-bar" role="progressbar"
                                                                 aria-valuemin="0" aria-valuemax="100"
-                                                                style=" background-color:lightgreen;"
-                                                                id="progress-bar-liquidacion">
+                                                                style=" background-color:lightgreen;">
                                                                 <label for="" id="liquidacion">0</label>
                                                             </div>
                                                         </div>
