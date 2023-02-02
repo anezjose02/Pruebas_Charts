@@ -28,6 +28,7 @@ Route::get('getdial','HomeController@getdial');
 Route::get('progressbar','HomeController@progressbar');
 Route::get('progressbarstart','HomeController@progressbarstart');
 Route::get('cardsD','HomeController@cardsD');
+Route::get('selectTotalVentas','HomeController@selectTotalVentas');
 
 Route::middleware(['auth', 'activeuser'])->group(function () {
 

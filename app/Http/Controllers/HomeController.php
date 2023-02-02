@@ -221,6 +221,39 @@ class HomeController extends Controller
         }
     }
 
+    public function selectTotalVentas(Request $request){
+        if($request->ajax())
+        {
+            $user_id =  Auth::user()->id;
+            $select= $request->select;
+
+            if ($select == 'Hoy') {
+                //$hoy = date('Y-m-d');
+                $sql = DB::table('documentos')->select('*')->where('user_id', $user_id)->get();
+                //$sql = $query->id;
+                $newsql = [];
+
+                
+                    //$sql = DB::table('formapagos')->where('documento_id', $query->id)->first();
+                foreach ($sql as $value) {
+                   $query = DB::table('formapagos')->select('*')->where('documento_id', $value->id)->get();
+
+                   if (empty($query)) {
+                    //$newsql[] = $query;
+                   }
+
+                   else $newsql[] = $query;
+                }
+                
+            }
+            //else $sql = [1,2,3,4,5,6,7,8];
+            
+         if ($newsql) {
+            return ($newsql);
+            }
+        }
+    }
+
     public function progressbarstart(Request $request){
         if($request->ajax())
         {

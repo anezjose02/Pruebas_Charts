@@ -178,35 +178,23 @@
                                                     <tr>
                                                         <th>
                                                             <select class="form-control form-control-sm select2"
-                                                                style="align-content: center; width:120px; heigth: 60px; border: 2px solid: black;">
-                                                                <option selected="selected">Data</option>
+                                                                style="align-content: center; width:120px; heigth: 60px; border: 2px solid: black;"
+                                                                id="select_total_ventas">
+                                                                <option selected="selected"></option>
+                                                                <option>Hoy</option>
+                                                                <option>Ayer</option>
+                                                                <option>Semana</option>
+                                                                <option>Mes</option>
                                                             </select>
                                                         </th>
                                                         <th>
-                                                            <label for="" style="position: relative; rigth:20px;">$
-                                                                20000.00</label>
+                                                            <label style="position: relative; rigth:20px;"
+                                                                id="total_ventas"></label>
                                                         </th>
                                                     </tr>
-                                                    <tr>
-                                                        <th>Efectivo:</th>
-                                                        <th>$ 4500.00</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Transferencia</th>
-                                                        <th>$ 14500.00</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Tarjeta de Credito</th>
-                                                        <th>$ 3500.00</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Tarjeta de Debito</th>
-                                                        <th>$ 8500.00</th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Credito</th>
-                                                        <th>$ 24500.00</th>
-                                                    </tr>
+                                                    <div id="complete_th_total_ventas">
+
+                                                    </div>
                                                 </thead>
                                             </table>
                                         </div>
@@ -214,6 +202,30 @@
                                     </div>
                                 </div>
                             </h6>
+
+                            <script>
+                                $('#select_total_ventas').blur(function(e) {
+                                    e.preventDefault();
+
+                                    let _token = $('meta[name="csrf-token"]').attr('content');
+                                    let select = $('#select_total_ventas').val();
+                                    console.log(select);
+                                    $.ajax({
+                                        type: "get",
+                                        url: '{{ URL::to('selectTotalVentas') }}',
+                                        data: {
+                                            _token: _token,
+                                            select : select
+                                        },
+                                        success: function(response) {
+                                            console.log('====================================');
+                                            console.log(response);
+                                            console.log('====================================');
+                                        }
+                                    });
+
+                                });
+                            </script>
 
                             <!-- /.description-block -->
                         </div>
